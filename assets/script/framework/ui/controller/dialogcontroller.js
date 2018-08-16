@@ -107,7 +107,7 @@ cc.Class({
         {
             if(this._isAutoClose)
             {
-                Global.uiMgr.removeByTag(this._showViewPath, isAction)
+                Global.uiMgr.removeByTag(this._showViewPath, false)
             }
         }
         return
