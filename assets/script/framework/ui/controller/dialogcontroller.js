@@ -58,6 +58,11 @@ cc.Class({
                     viewScript.setData(data)
                 }
                 self._view.addChild(self._showView)
+                let scaleBefore = cc.scaleTo(0, 1.2, 1.2)
+                let scaleAfter = cc.scaleTo(0.2, 1, 1)
+                scaleAfter.easing(cc.easeBounceOut())
+                let seq = cc.sequence(scaleBefore, scaleAfter)
+                self._showView.runAction(seq)
             }
         })
     },
@@ -70,8 +75,8 @@ cc.Class({
         Global.resMgr.loadRes(Global.files.DialogView, cc.Prefab, function(prefab)
         {
             self._view = cc.instantiate(prefab)
-            console.log("DialogController setShowView -> ", Global.typeConfig.zOrder)
             Global.uiMgr.addView(self._view, viewPath, Global.typeConfig.zOrder.Dialog)
+            self.getViewScript().initCtrl(self)
             self.registerListener()
             self.initShowView(viewPath, data)
         })
@@ -102,26 +107,33 @@ cc.Class({
         {
             if(this._isAutoClose)
             {
-                uiMgr.removeByTag(this._showViewPath)
+                Global.uiMgr.removeByTag(this._showViewPath, isAction)
             }
         }
         return
     },
 
+    onDialogClose()
+    {
+        this.getViewScript().mpNodeMesk.node.active = false
+    },
+
     registerListener()
     {
         this.getViewScript().mpNodeMesk.node.on(cc.Node.EventType.TOUCH_END, this.onButtonClickMesk, this)
+        Global.eventMgr.registerListener("CLOSE_DIALOG", this.onDialogClose.bind(this))
     },
 
     releaseListener()
     {
         // this.getViewScript().mpNodeMesk.node.off(cc.Node.EventType.TOUCH_END, this.onButtonClickMesk, this)
+        Global.eventMgr.releaseListener("CLOSE_DIALOG", this.onDialogClose.bind(this))
     },
 
     onDestroy()
     {
-        
-        this._view = null
+        console.log("DialogController onDestroy Run")
         this.releaseListener()
+        this._view = null
     },
 });

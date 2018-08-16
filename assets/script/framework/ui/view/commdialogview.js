@@ -38,6 +38,11 @@ cc.Class({
         mpNodeRight: cc.Node,
     },
 
+    ctor()
+    {
+        this._hasInitCtrl = false
+    },
+
     onLoad () 
     {
         this.initCtrl()
@@ -46,6 +51,12 @@ cc.Class({
 
     initCtrl()
     {
+        if(this._hasInitCtrl)
+        {
+            return
+        }
+
+        this._hasInitCtrl = true
         var Controller = require("commdialogcontroller")
         this._ctrl = new Controller()
         this._ctrl.setView(this)
@@ -53,6 +64,9 @@ cc.Class({
 
     setData(data)
     {
+        this.initCtrl()
+        this._ctrl.setData(data)
+
         this.mpLabelDesc.string = data.desc || ""
         this.mpLabelLeft.string = data.left || ""
         this.mpLabelRight.string = data.right || ""

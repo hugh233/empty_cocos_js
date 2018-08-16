@@ -34,17 +34,43 @@ cc.Class({
     setView(view)
     {
         this._view = view
+        this._viewData = null
+        this._leftHandler = null
+        this._rightHandler = null
         this.registerListener()
+    },
+
+    setData(data)
+    {
+        this._viewData = data
+        if(data.leftHandler != null)
+        {
+            this._leftHandler = data.leftHandler
+        }
+        if(data.rightHandler != null)
+        {
+            this._rightHandler = data.rightHandler
+        }
     },
 
     onButtonClickLeft()
     {
-        Global.uiMgr.removeByTag(Global.files.CommDialogView)
+        Global.eventMgr.dispatchEvent("CLOSE_DIALOG")
+        if(this._leftHandler != null)
+        {
+            this._leftHandler.call()
+        }
+        Global.uiMgr.removeByTag(Global.files.CommDialogView, true)
     },
 
     onButtonClickRight()
     {
-        Global.uiMgr.removeByTag(Global.files.CommDialogView)
+        Global.eventMgr.dispatchEvent("CLOSE_DIALOG")
+        if(this._rightHandler != null)
+        {
+            this._rightHandler.call()
+        }
+        Global.uiMgr.removeByTag(Global.files.CommDialogView, true)
     },
 
     registerListener()

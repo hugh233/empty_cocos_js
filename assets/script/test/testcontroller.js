@@ -54,7 +54,15 @@ cc.Class({
         console.log("TestController onButtonClickSbowDialog Run")
         var Controller = require("dialogcontroller")
         var ctrl = new Controller()
-        ctrl.setShowView(Global.files.CommDialogView, false, {componentName: "commdialogview", desc: "这是内容", left: "左边按钮", right: "右边按钮"})
+        ctrl.setShowView(Global.files.CommDialogView, false, 
+            {
+                componentName: "commdialogview", 
+                desc: "这是内容", 
+                left: "左边按钮", 
+                right: "右边按钮",
+                leftHandler: this.testFunc.bind(this),
+                rightHandler: this.testFunc.bind(this)
+            })
     },
 
     onButtonClickMain()

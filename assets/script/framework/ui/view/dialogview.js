@@ -41,8 +41,9 @@ cc.Class({
         this.initView()
     },
 
-    initCtrl()
+    initCtrl(ctrl)
     {
+        this._ctrl = ctrl
         // var Controller = require("dialogcontroller")
         // this._ctrl = new Controller()
         // this._ctrl.setView(this)

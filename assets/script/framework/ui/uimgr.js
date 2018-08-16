@@ -199,17 +199,33 @@ var UIMgr = cc.Class({
         return ui.name
     },
 
-    removeByTag(tag)
+    removeByTag(tag, isAction)
     {
         var ui = this.getUiByTag(tag)
         if(ui)
         {
-            ui.destroy()
+            if(isAction)
+            {
+                let scaleBefore = cc.scaleTo(0, 1.2, 1.2)
+                let scaleAfter = cc.scaleTo(0.2, 0, 0)
+                // scaleAfter.easing(cc.easeBounceOut())
+                let callback = cc.callFunc(this.destroyNode, this, ui)
+                let seq = cc.sequence(scaleBefore, scaleAfter, callback)
+                ui.runAction(seq)
+            }else
+            {
+                ui.destroy()
+            }
         }
         else
         {
             console.log("uiMgr removeByTag ui is null -> ", tag)
         }
+    },
+
+    destroyNode(node)
+    {
+        node.destroy()
     },
 
     getUiByTag(uiName)
