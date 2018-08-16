@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "62b71abf-522a-4c75-9f3e-fc519fe14a5d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Bar_Oppo_02": {
+      "ver": "1.0.3",
+      "uuid": "78064d54-c44e-4a7c-b95d-8e4cdf3b2e72",
+      "rawTextureUuid": "62b71abf-522a-4c75-9f3e-fc519fe14a5d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 30,
+      "height": 21,
+      "rawWidth": 30,
+      "rawHeight": 21,
+      "borderTop": 9,
+      "borderBottom": 9,
+      "borderLeft": 13,
+      "borderRight": 13,
+      "subMetas": {}
+    }
+  }
+}

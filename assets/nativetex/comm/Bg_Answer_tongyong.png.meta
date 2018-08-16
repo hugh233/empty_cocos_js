@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "0fba698a-93d6-45c6-bb50-9e18ff73f7b4",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Bg_Answer_tongyong": {
+      "ver": "1.0.3",
+      "uuid": "76a25f44-feea-4ad5-99d6-873a25ef2c4d",
+      "rawTextureUuid": "0fba698a-93d6-45c6-bb50-9e18ff73f7b4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1080,
+      "height": 2080,
+      "rawWidth": 1080,
+      "rawHeight": 2080,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
